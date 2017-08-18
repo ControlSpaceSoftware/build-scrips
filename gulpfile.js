@@ -20,7 +20,10 @@ const AWS = require('aws-sdk');
 const buildScriptsPkg = require('./package.json');
 const lambdaFunctionPkg = require('../../package.json');
 const lambdaFunctionName = camelCase(lambdaFunctionPkg.name);
+
+// parameters from package.json files
 const globals = Object.assign({}, buildScriptsPkg.globals, lambdaFunctionPkg.globals);
+const region = Object.assign({}, buildScriptsPkg.aws.region, lambdaFunctionPkg.aws && lambdaFunctionPkg.aws.region);
 
 // First we need to clean out the dist folder and remove the compiled zip file.
 gulp.task('clean', function (cb) {
@@ -93,7 +96,7 @@ gulp.task('zip', function () {
 // See http://aws.amazon.com/sdk-for-node-js/
 gulp.task('upload', function (cb) {
 
-	AWS.config.region = lambdaFunctionPkg.aws.region;
+	AWS.config.region = region;
 
 	const lambda = new AWS.Lambda();
 
