@@ -23,7 +23,7 @@ const lambdaFunctionName = camelCase(lambdaFunctionPkg.name);
 
 // parameters from package.json files
 const globals = Object.assign({}, buildScriptsPkg.globals, lambdaFunctionPkg.globals);
-const region = Object.assign({}, buildScriptsPkg.aws.region, lambdaFunctionPkg.aws && lambdaFunctionPkg.aws.region);
+const region = (lambdaFunctionPkg.aws && lambdaFunctionPkg.aws.region) || buildScriptsPkg.aws.region;
 
 // First we need to clean out the dist folder and remove the compiled zip file.
 gulp.task('clean', function (cb) {
