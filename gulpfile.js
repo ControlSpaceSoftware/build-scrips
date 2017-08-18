@@ -22,15 +22,13 @@ const lambdaFunctionName = camelCase(pkg.name);
 
 // First we need to clean out the dist folder and remove the compiled zip file.
 gulp.task('clean', function (cb) {
-	return del('../../dist',
-		del('./dist.zip', cb)
-	);
+	return del(['../../dist', '../../dist.zip'], {force: true}, cb);
 });
 
 // The js task could be replaced with gulp-coffee as desired.
 gulp.task('js', function () {
 	return gulp.src('../../src/*.js')
-		.pipe(gulp.dest('dist/'))
+		.pipe(gulp.dest('../../dist/'))
 });
 
 gulp.task('es6', function () {
