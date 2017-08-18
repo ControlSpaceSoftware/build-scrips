@@ -5,15 +5,13 @@
 const program = require('commander');
 const shell = require('shelljs');
 
-console.log('Hello, world!');
+shell.exec('pwd');
 
 program
 	.version('0.1.0')
 	.command('build')
-	.description('build lambda function and generate lambda function zip file')
-	.action(function (env) {
-		console.log('starting build', env);
-		shell.exec('pwd');
+	.description('build lambda function in /dist directory')
+	.action(function () {
 		shell.exec("npm install", function (error, stdout, stderr) {
 			if (error !== null) {
 				// shell.exec('ls -al ./node_modules/build-scripts/gulpfile.js');
@@ -22,5 +20,17 @@ program
 		});
 	});
 
-program.parse(process.argv);
+program
+	.version('0.1.0')
+	.command('deploy-lambda')
+	.description('build and deploy function to aws lambda - function must already exist')
+	.action(function (env) {
+		shell.exec("npm install", function (error, stdout, stderr) {
+			if (error !== null) {
+				// shell.exec('ls -al ./node_modules/build-scripts/gulpfile.js');
+				shell.exec('./node_modules/gulp/bin/gulp.js --gulpfile ./node_modules/build-scripts/gulpfile.js');
+			}
+		});
+	});
 
+program.parse(process.argv);
