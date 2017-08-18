@@ -22,13 +22,13 @@ program
 
 program
 	.version('0.1.0')
-	.command('deploy-lambda')
+	.command('upload-lambda')
 	.description('build and deploy function to aws lambda - function must already exist')
 	.action(function (env) {
 		shell.exec("npm install", function (error, stdout, stderr) {
 			if (error !== null) {
 				// shell.exec('ls -al ./node_modules/build-scripts/gulpfile.js');
-				shell.exec('./node_modules/gulp/bin/gulp.js --gulpfile ./node_modules/build-scripts/gulpfile.js');
+				shell.exec('./node_modules/gulp/bin/gulp.js upload --gulpfile ./node_modules/build-scripts/gulpfile.js');
 			}
 		});
 	});

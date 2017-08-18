@@ -17,19 +17,19 @@ const babel = require('rollup-plugin-babel');
 
 const AWS = require('aws-sdk');
 
-const pkg = require('./package.json');
+const pkg = require('../../package.json');
 const lambdaFunctionName = camelCase(pkg.name);
 
 // First we need to clean out the dist folder and remove the compiled zip file.
 gulp.task('clean', function (cb) {
-	return del('./dist',
-		del('./archive.zip', cb)
+	return del('../../dist',
+		del('./dist.zip', cb)
 	);
 });
 
 // The js task could be replaced with gulp-coffee as desired.
 gulp.task('js', function () {
-	return gulp.src('src/*.js')
+	return gulp.src('../../src/*.js')
 		.pipe(gulp.dest('dist/'))
 });
 
@@ -67,23 +67,23 @@ gulp.task('es6', function () {
 
 // Here we want to install npm packages to dist, ignoring devDependencies.
 gulp.task('npm', function () {
-	return gulp.src('./package.json')
-		.pipe(gulp.dest('./dist/'))
+	return gulp.src('../../package.json')
+		.pipe(gulp.dest('../../dist/'))
 		.pipe(install({production: true}));
 });
 
 // Next copy over environment variables managed outside of source control.
 gulp.task('env', function () {
-	return gulp.src('./config.env.production')
+	return gulp.src('../../config.env.production')
 		.pipe(rename('.env'))
-		.pipe(gulp.dest('./dist'))
+		.pipe(gulp.dest('../../dist'))
 });
 
 // Now the dist directory is ready to go. Zip it.
 gulp.task('zip', function () {
-	return gulp.src(['dist/**/*', '!dist/package.json', 'dist/.*'])
-		.pipe(zip('dist.zip'))
-		.pipe(gulp.dest('./'));
+	return gulp.src(['../../dist/**/*', '!../../dist/package.json', '../../dist/.*'])
+		.pipe(zip('../../dist.zip'))
+		.pipe(gulp.dest('../../'));
 });
 
 // Per the gulp guidelines, we do not need a plugin for something that can be
@@ -119,7 +119,7 @@ gulp.task('upload', function (cb) {
 			FunctionName: functionName
 		};
 
-		fs.readFile('./dist.zip', function (err, data) {
+		fs.readFile('../../dist.zip', function (err, data) {
 			params['ZipFile'] = data;
 			lambda.updateFunctionCode(params, function (err, data) {
 				if (err) {
@@ -134,4 +134,5 @@ gulp.task('upload', function (cb) {
 });
 
 // The key to deploying as a single command is to manage the sequence of events.
-gulp.task('default', gulp.series(['clean', 'es6', 'npm', 'zip', 'upload']));
+gulp.task('build', gulp.series(['clean', 'es6', 'npm', 'zip']));
+gulp.task('upload', gulp.series(['clean', 'es6', 'npm', 'zip', 'upload']));
