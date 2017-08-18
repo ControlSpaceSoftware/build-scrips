@@ -22,6 +22,19 @@ program
 
 program
 	.version('0.1.0')
+	.command('zip')
+	.description('zip ./dist directory into ./dist.zip file')
+	.action(function () {
+		shell.exec("npm install", function (error, stdout, stderr) {
+			if (error !== null) {
+				// shell.exec('ls -al ./node_modules/build-scripts/gulpfile.js');
+				shell.exec('./node_modules/gulp/bin/gulp.js zip --gulpfile ./node_modules/build-scripts/gulpfile.js');
+			}
+		});
+	});
+
+program
+	.version('0.1.0')
 	.command('build')
 	.description('build lambda function in /dist directory')
 	.action(function () {

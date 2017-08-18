@@ -80,7 +80,7 @@ gulp.task('env', function () {
 // Now the dist directory is ready to go. Zip it.
 gulp.task('zip', function () {
 	return gulp.src(['../../dist/**/*', '!../../dist/package.json', '../../dist/.*'])
-		.pipe(zip('../../dist.zip'))
+		.pipe(zip('dist.zip'))
 		.pipe(gulp.dest('../../'));
 });
 
