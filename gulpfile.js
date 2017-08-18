@@ -1,3 +1,4 @@
+/*global require*/
 
 /**
  * Created by onvelocity on 8/8/17.
