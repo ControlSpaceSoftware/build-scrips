@@ -9,7 +9,6 @@ const del = require('del');
 const chalk = require('chalk');
 const gulp = require('gulp');
 const file = require('gulp-file');
-const gutil = require('gulp-util');
 const rename = require('gulp-rename');
 const install = require('gulp-install');
 const camelCase = require('lodash.camelcase');
@@ -106,7 +105,7 @@ gulp.task('upload', function (cb) {
 	lambda.getFunction({FunctionName: functionName}, function (err, data) {
 		if (err) {
 			if (err.statusCode === 404) {
-				console.log(chalk.red(`Unable to find lambda function ${functionName}. Create the function on AWS before uploading this function.`));
+				console.log(chalk.red(`\nUnable to find lambda function ${functionName}.\nCreate the function on AWS before uploading this function.\n`));
 				console.error(err);
 			} else {
 				console.log(chalk.red(`AWS API request failed.`));
@@ -127,7 +126,7 @@ gulp.task('upload', function (cb) {
 			params['ZipFile'] = data;
 			lambda.updateFunctionCode(params, function (err, data) {
 				if (err) {
-					gutil.log(chalk.red(err.message));
+					console.log(chalk.red(err.message));
 					console.error(err);
 				}
 				cb();
