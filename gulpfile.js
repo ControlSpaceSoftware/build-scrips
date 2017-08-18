@@ -33,34 +33,36 @@ gulp.task('js', function () {
 		.pipe(gulp.dest('dist/'))
 });
 
-gulp.task('es6', function () {
-	return rollup({
-		entry: 'src/index.js',
-		globals: Object.assign({'aws-sdk': 'AWS'}, pkg.globals),
-		plugins: [
-			babel({
-				presets: [
-					[
-						"es2015", {
-						"modules": false
-					}
-					]
-				],
-				babelrc: false,
-				exclude: 'node_modules/**'
-			})
-		]
-	})
-		.then((bundle) => {
-			return bundle.generate({
-				format: 'umd',
-				moduleName: 'myModuleName'
-			})
-		})
-		.then((gen) => {
-			return file('index.js', gen.code, {src: true})
-				.pipe(gulp.dest('./dist/'))
-		});
+gulp.task('es6', function (cb) {
+	console.log('running the es6 task now');
+	cb();
+	// return rollup({
+	// 	entry: '../../src/index.js',
+	// 	globals: Object.assign({'aws-sdk': 'AWS'}, pkg.globals),
+	// 	plugins: [
+	// 		babel({
+	// 			presets: [
+	// 				[
+	// 					"es2015", {
+	// 					"modules": false
+	// 				}
+	// 				]
+	// 			],
+	// 			babelrc: false,
+	// 			exclude: 'node_modules/**'
+	// 		})
+	// 	]
+	// })
+	// 	.then((bundle) => {
+	// 		return bundle.generate({
+	// 			format: 'umd',
+	// 			moduleName: 'myModuleName'
+	// 		})
+	// 	})
+	// 	.then((gen) => {
+	// 		return file('index.js', gen.code, {src: true})
+	// 			.pipe(gulp.dest('../../dist/'))
+	// 	});
 });
 
 // Here we want to install npm packages to dist, ignoring devDependencies.

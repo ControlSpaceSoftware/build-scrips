@@ -1,15 +1,26 @@
 #!/usr/bin/env node --harmony
 
-console.log('Hello, world!');
-
 //http://blog.npmjs.org/post/118810260230/building-a-simple-command-line-tool-with-npm
 
-// const shell = require('shelljs');
-//
-// shell.exec("./node_modules/build-scripts/node_modules/gulp/bin/gulp.js ./node_modules/build-scripts/gulpfile.js", function (error, stdout, stderr) {
-// 	console.log('stdout: ' + stdout);
-// 	console.log('stderr: ' + stderr);
-// 	if (error !== null) {
-// 		console.log('exec error: ' + error);
-// 	}
-// });
+const program = require('commander');
+const shell = require('shelljs');
+
+console.log('Hello, world!');
+
+program
+	.version('0.1.0')
+	.command('build')
+	.description('build lambda function and generate lambda function zip file')
+	.action(function (env) {
+		console.log('starting build', env);
+		shell.exec('pwd');
+		shell.exec("npm install", function (error, stdout, stderr) {
+			if (error !== null) {
+				// shell.exec('ls -al ./node_modules/build-scripts/gulpfile.js');
+				shell.exec('./node_modules/gulp/bin/gulp.js es6 --gulpfile ./node_modules/build-scripts/gulpfile.js');
+			}
+		});
+	});
+
+program.parse(process.argv);
+
