@@ -41,17 +41,7 @@ gulp.task('es6', function () {
 		entry: '../../src/index.js',
 		globals,
 		plugins: [
-			babel({
-				presets: [
-					[
-						"es2015", {
-						"modules": false
-					}
-					]
-				],
-				babelrc: false,
-				exclude: 'node_modules/**'
-			})
+			babel()
 		]
 	})
 		.then((bundle) => {
