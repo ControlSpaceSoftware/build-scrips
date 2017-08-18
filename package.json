@@ -1,6 +1,6 @@
 {
   "name": "build-scripts",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "build node module scripts",
   "main": "index.js",
   "bin": {
