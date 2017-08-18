@@ -106,12 +106,13 @@ gulp.task('upload', function (cb) {
 	lambda.getFunction({FunctionName: functionName}, function (err, data) {
 		if (err) {
 			if (err.statusCode === 404) {
-				gutil.log(chalk.red(`Unable to find lambda function ${functionName}. Create the function on AWS before uploading this function.`));
+				console.log(chalk.red(`Unable to find lambda function ${functionName}. Create the function on AWS before uploading this function.`));
+				console.error(err);
 			} else {
-				gutil.log(`AWS API request failed.`);
+				console.log(chalk.red(`AWS API request failed.`));
 				console.error(err);
 			}
-			return;
+			return cb();
 		}
 
 		const current = data.Configuration;
