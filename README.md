@@ -1,2 +1,2 @@
-# build-scrips
+# build-scripts
 build scripts
