@@ -28,7 +28,7 @@ program
 		shell.exec("npm install", function (error, stdout, stderr) {
 			if (error !== null) {
 				// shell.exec('ls -al ./node_modules/build-scripts/gulpfile.js');
-				shell.exec('./node_modules/gulp/bin/gulp.js es6 --gulpfile ./node_modules/build-scripts/gulpfile.js');
+				shell.exec('./node_modules/gulp/bin/gulp.js build --gulpfile ./node_modules/build-scripts/gulpfile.js');
 			}
 		});
 	});
