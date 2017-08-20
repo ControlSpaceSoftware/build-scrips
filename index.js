@@ -75,7 +75,7 @@ program
 	.action(function (env) {
 		shell.exec("npm install", function (error, stdout, stderr) {
 			if (!error) {
-				shell.exec('run npm test');
+				shell.exec('npm run test');
 			}
 		});
 	});
