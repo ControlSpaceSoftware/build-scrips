@@ -9,6 +9,8 @@ shell.exec('pwd');
 shell.exec('npm install babel-cli babel-preset-env chai expect mocha sinon');
 
 const pkg = require('./package.json');
+console.log(JSON.stringify(pkg, null, 4));
+
 const BABEL_RC = {
 	"babel": {
 		"presets": [
@@ -18,10 +20,10 @@ const BABEL_RC = {
 };
 
 if (!(pkg && typeof pkg.babel === 'object')) {
-	console.error('package.json is missing babel options. add following to your package.json:');
-	console.error(JSON.stringify(BABEL_RC, null, 4));
-	console.error('fatal error exiting.');
-	process.exit(1);
+	console.log('package.json is missing babel options. add following to your package.json:');
+	console.log(JSON.stringify(BABEL_RC, null, 4));
+	console.log('fatal error exiting.');
+	return;
 }
 
 program
