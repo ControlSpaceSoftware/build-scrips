@@ -6,8 +6,7 @@ const program = require('commander');
 const shell = require('shelljs');
 
 shell.exec('pwd');
-shell.cd('./node_modules/build-scripts/');
-shell.exec('pwd');
+shell.exec('npm install babel-cli babel-preset-env chai expect mocha sinon');
 
 program
 	.version('0.1.0')
