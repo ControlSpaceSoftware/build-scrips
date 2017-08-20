@@ -14,7 +14,7 @@ const chalk = require('chalk');
 
 shell.exec('pwd');
 
-const projectPackageJson = require('../../package.json');
+const projectPackageJson = require('./package.json');
 
 const BABEL_RC = {
 	"babel": {
@@ -31,7 +31,7 @@ if (!(projectPackageJson && typeof projectPackageJson.babel === 'object')) {
 	return;
 }
 
-shell.ln('-s', './node_modules/build-scrips/index.js', './build-scripts');
+// shell.ln('-s', './node_modules/build-scrips/index.js', './build-scripts');
 
 const commands = [
 	{

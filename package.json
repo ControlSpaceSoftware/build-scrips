@@ -7,15 +7,7 @@
     "build-scripts": "./index.js"
   },
   "scripts": {
-    "commit:all:push": "git add --all . && git commit -a -m 'wip' && git push origin",
-    "build:lambda": "./node_modules/gulp/bin/gulp.js",
-    "build": "babel src --out-dir lib",
-    "test": "mocha --compilers js:babel-core/register test",
-    "test:watch": "mocha --compilers js:babel-core/register --watch test",
-    "commit": "npm run build && npm run test && git commit",
-    "patch": "npm version patch",
-    "push": "git push origin --follow-tags",
-    "patch:push": "npm run build && npm run test && npm run patch && npm run push"
+    "commit:all:push": "git add --all . && git commit -a -m 'wip' && git push origin"
   },
   "repository": {
     "type": "git",
