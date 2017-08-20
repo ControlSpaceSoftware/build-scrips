@@ -61,7 +61,7 @@ program
 	.action(function (env) {
 		shell.exec("npm install", function (error, stdout, stderr) {
 			if (!error) {
-				shell.exec('npm run build');
+				shell.exec('babel src --out-dir lib');
 			}
 		});
 	});
@@ -75,7 +75,7 @@ program
 	.action(function (env) {
 		shell.exec("npm install", function (error, stdout, stderr) {
 			if (!error) {
-				shell.exec('npm run test');
+				shell.exec('mocha --compilers js:babel-core/register test');
 			}
 		});
 	});
@@ -89,7 +89,7 @@ program
 	.action(function (env) {
 		shell.exec("npm install", function (error, stdout, stderr) {
 			if (!error) {
-				shell.exec('npm run test:watch');
+				shell.exec('mocha --compilers js:babel-core/register --watch test');
 			}
 		});
 	});
@@ -103,7 +103,7 @@ program
 	.action(function (env) {
 		shell.exec("npm install", function (error, stdout, stderr) {
 			if (!error) {
-				shell.exec('npm run commit');
+				shell.exec('npm run build && npm run test && git commit');
 			}
 		});
 	});
@@ -117,7 +117,7 @@ program
 	.action(function (env) {
 		shell.exec("npm install", function (error, stdout, stderr) {
 			if (!error) {
-				shell.exec('npm run patch');
+				shell.exec('npm version patch');
 			}
 		});
 	});
@@ -131,7 +131,7 @@ program
 	.action(function (env) {
 		shell.exec("npm install", function (error, stdout, stderr) {
 			if (!error) {
-				shell.exec('npm run push');
+				shell.exec('git push origin --follow-tags');
 			}
 		});
 	});
@@ -145,7 +145,7 @@ program
 	.action(function (env) {
 		shell.exec("npm install", function (error, stdout, stderr) {
 			if (!error) {
-				shell.exec('npm run patch:push');
+				shell.exec('npm run build && npm run test && npm run patch && npm run push');
 			}
 		});
 	});
