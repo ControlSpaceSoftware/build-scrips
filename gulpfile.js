@@ -31,13 +31,11 @@ gulp.task('clean', function (cb) {
 });
 
 const mocha = require('gulp-mocha');
-const babelRegister = require('babel-register');
+// const babelRegister = require('babel-register');
 gulp.task('mocha', function() {
 	return gulp.src(['../../test/**/*.js'])
 		.pipe(mocha({
-			compilers: {
-				js: babelRegister
-			}
+			compilers: ['js:babel-core/register']
 		}));
 });
 
