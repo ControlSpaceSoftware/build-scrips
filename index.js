@@ -7,7 +7,7 @@ const shell = require('shelljs');
 
 shell.exec('pwd');
 
-const pkg = require('./package.json');
+const pkg = require('../../package.json');
 console.log(JSON.stringify(pkg, null, 4));
 
 const BABEL_RC = {
