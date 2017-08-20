@@ -12,16 +12,10 @@ npm install github:ControlSpaceSoftware/build-scripts.git --save-dev
 npm install github:ControlSpaceSoftware/build-scripts.git -g
 ```
 
-### Locally Installed Usage
+### Usage
 
 ```
-./node_modules/build-scripts <cmd> <options>
-```
-
-### Globally Installed Usage
-
-```
-build-scripts <cmd> <options>
+build-scripts command [options]
 ```
 
 ## Commands
@@ -29,7 +23,7 @@ build-scripts <cmd> <options>
 ```
 build-scripts -h
 
-  Usage: index [options] [command]
+  Usage: build-scripts [options] [command]
 
 
   Options:
@@ -81,21 +75,21 @@ use mocha for testing
 
 ## Your package.json File
 
-Add convenience scripts so you can run commands more conveniently, like, npm run cmd.
+Add convenience scripts so you can conveniently run commands from npm, like, npm run test-watch.
 
 ```javascript
 {
     "scripts": {
-        "clean": "./node_modules/build-scripts/index.js clean",
-        "zip": "./node_modules/build-scripts/index.js zip",
-        "build-lambda": "./node_modules/build-scripts/index.js build-lambda",
-        "upload-lambda": "./node_modules/build-scripts/index.js upload-lambda",
-        "build": "./node_modules/build-scripts/index.js build",
-        "test": "./node_modules/build-scripts/index.js test",
-        "test-watch": "./node_modules/build-scripts/index.js test-watch",
-        "commit": "./node_modules/build-scripts/index.js commit",
-        "patch": "./node_modules/build-scripts/index.js patch",
-        "push": "./node_modules/build-scripts/index.js push"
+        "clean": "build-scripts clean",
+        "zip": "build-scripts zip",
+        "build-lambda": "build-scripts build-lambda",
+        "upload-lambda": "build-scripts upload-lambda",
+        "build": "build-scripts build",
+        "test": "build-scripts test",
+        "test-watch": "build-scripts test-watch",
+        "commit": "build-scripts commit",
+        "patch": "build-scripts patch",
+        "push": "build-scripts push"
     }
 }
 ```
