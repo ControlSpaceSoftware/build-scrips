@@ -17,13 +17,13 @@ const babel = require('rollup-plugin-babel');
 
 const AWS = require('aws-sdk');
 
-const buildScriptsPkg = require('./package.json');
-const lambdaFunctionPkg = require('../../package.json');
-const lambdaFunctionName = camelCase(lambdaFunctionPkg.name);
+const scriptsPackageJson = require('./package.json');
+const projectPackageJson = require('../../package.json');
+const projectPackageClassName = camelCase(projectPackageJson.name);
 
 // parameters from package.json files
-const globals = Object.assign({}, buildScriptsPkg.globals, lambdaFunctionPkg.globals);
-const region = (lambdaFunctionPkg.aws && lambdaFunctionPkg.aws.region) || buildScriptsPkg.aws.region;
+const globals = Object.assign({}, scriptsPackageJson.globals, projectPackageJson.globals);
+const region = (projectPackageJson.aws && projectPackageJson.aws.region) || scriptsPackageJson.aws.region;
 
 // First we need to clean out the dist folder and remove the compiled zip file.
 gulp.task('clean', function (cb) {
@@ -99,7 +99,7 @@ gulp.task('upload', function (cb) {
 
 	const lambda = new AWS.Lambda();
 
-	const functionName = lambdaFunctionName;
+	const functionName = projectPackageClassName;
 
 	lambda.getFunction({FunctionName: functionName}, function (err, data) {
 		if (err) {
