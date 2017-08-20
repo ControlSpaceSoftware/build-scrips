@@ -1,6 +1,6 @@
 {
   "name": "build-scripts",
-  "version": "1.0.23",
+  "version": "1.0.24",
   "description": "build node module scripts",
   "main": "index.js",
   "bin": {
@@ -8,13 +8,13 @@
   },
   "scripts": {
     "build:lambda": "./node_modules/gulp/bin/gulp.js",
-	  "build": "babel src --out-dir lib",
-	  "test": "mocha --compilers js:babel-core/register test",
-	  "test:watch": "mocha --compilers js:babel-core/register --watch test",
-	  "commit": "npm run build && npm run test && git commit",
-	  "patch": "npm version patch",
-	  "push": "git push origin --follow-tags",
-	  "patch:push": "npm run build && npm run test && npm run patch && npm run push"
+    "build": "babel src --out-dir lib",
+    "test": "mocha --compilers js:babel-core/register test",
+    "test:watch": "mocha --compilers js:babel-core/register --watch test",
+    "commit": "npm run build && npm run test && git commit",
+    "patch": "npm version patch",
+    "push": "git push origin --follow-tags",
+    "patch:push": "npm run build && npm run test && npm run patch && npm run push"
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,7 @@
   "homepage": "https://github.com/ControlSpaceSoftware/build-scripts#readme",
   "dependencies": {
     "aws-sdk": "^2.96.0",
-	  "babel-cli": "^6.26.0",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-es2015": "^6.24.1",
@@ -46,11 +46,10 @@
     "rollup": "^0.47.6",
     "rollup-plugin-babel": "^3.0.2",
     "shelljs": "^0.7.8",
-	  "chai": "^4.1.1",
-	  "expect": "^1.20.2",
-	  "mocha": "^3.5.0",
-	  "sinon": "^3.2.1"
-
+    "chai": "^4.1.1",
+    "expect": "^1.20.2",
+    "mocha": "^3.5.0",
+    "sinon": "^3.2.1"
   },
   "devDependencies": {},
   "aws": {
@@ -60,9 +59,9 @@
     "aws-sdk": "AWS",
     "shortid": "shortId"
   },
-	"babel": {
-		"presets": [
-			"env"
-		]
-	}
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  }
 }
