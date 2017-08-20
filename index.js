@@ -75,7 +75,8 @@ program
 	.action(function (env) {
 		shell.exec("npm install", function (error, stdout, stderr) {
 			if (!error) {
-				shell.exec('mocha --compilers js:babel-core/register test');
+				console.log('runnint mocha --compilers js:babel-core/register test');
+				shell.exec('mocha --compilers js:babel-core/register ../../test');
 			}
 		});
 	});
