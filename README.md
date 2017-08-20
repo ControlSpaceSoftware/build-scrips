@@ -5,7 +5,7 @@ Centralized development commands for building ES6 modules and common development
 ## Install
 
 ```
-// locally
+// locally **prefered**
 npm install github:ControlSpaceSoftware/build-scripts.git --save-dev
 
 // globally
@@ -77,4 +77,25 @@ use mocha for testing
 	test
 	dist
 
+```
+
+## Your package.json File
+
+Add convenience scripts so you can run commands more conveniently, like, npm run cmd.
+
+```javascript
+{
+    "scripts": {
+        "clean": "./node_modules/build-scripts/index.js clean",
+        "zip": "./node_modules/build-scripts/index.js zip",
+        "build-lambda": "./node_modules/build-scripts/index.js build-lambda",
+        "upload-lambda": "./node_modules/build-scripts/index.js upload-lambda",
+        "build": "./node_modules/build-scripts/index.js build",
+        "test": "./node_modules/build-scripts/index.js test",
+        "test-watch": "./node_modules/build-scripts/index.js test-watch",
+        "commit": "./node_modules/build-scripts/index.js commit",
+        "patch": "./node_modules/build-scripts/index.js patch",
+        "push": "./node_modules/build-scripts/index.js push"
+    }
+}
 ```
