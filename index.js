@@ -6,7 +6,6 @@ const program = require('commander');
 const shell = require('shelljs');
 
 shell.exec('pwd');
-shell.exec('npm install babel-cli babel-preset-env chai expect mocha sinon');
 
 const pkg = require('./package.json');
 console.log(JSON.stringify(pkg, null, 4));
@@ -25,6 +24,8 @@ if (!(pkg && typeof pkg.babel === 'object')) {
 	console.log('fatal error exiting.');
 	return;
 }
+
+shell.exec('npm install babel-cli babel-preset-env chai expect mocha sinon');
 
 program
 	.version('0.1.0')
