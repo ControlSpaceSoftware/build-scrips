@@ -30,6 +30,17 @@ gulp.task('clean', function (cb) {
 	return del(['../../dist', '../../dist.zip'], {force: true}, cb);
 });
 
+const mocha = require('gulp-mocha');
+const babelRegister = require('babel/register');
+gulp.task('mocha', function() {
+	return gulp.src(['../../test/**/*.js'])
+		.pipe(mocha({
+			compilers: {
+				js: babelRegister
+			}
+		}));
+});
+
 // The js task could be replaced with gulp-coffee as desired.
 gulp.task('js', function () {
 	return gulp.src('../../src/*.js')

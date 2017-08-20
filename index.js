@@ -77,7 +77,7 @@ program
 			if (!error) {
 				console.log('running mocha --compilers js:babel-core/register test');
 				console.log(`current dir: ${process.cwd()}`);
-				shell.exec('mocha --compilers js:babel-core/register test');
+				shell.exec('./node_modules/gulp/bin/gulp.js mocha --gulpfile ./node_modules/build-scripts/gulpfile.js');
 			}
 		});
 	});
