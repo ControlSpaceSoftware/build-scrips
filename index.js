@@ -13,8 +13,10 @@ const shell = require('shelljs');
 const chalk = require('chalk');
 
 shell.exec('pwd');
+console.log(`current dir: ${process.cwd()}`);
 
 const projectPackageJson = require('./package.json');
+console.log(JSON.stringify(projectPackageJson, null, 4));
 
 const BABEL_RC = {
 	"babel": {
