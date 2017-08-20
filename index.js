@@ -6,6 +6,8 @@ const program = require('commander');
 const shell = require('shelljs');
 
 shell.exec('pwd');
+shell.cd('./node_modules/build-scripts/');
+shell.exec('pwd');
 
 program
 	.version('0.1.0')
@@ -77,7 +79,7 @@ program
 			if (!error) {
 				console.log('running mocha --compilers js:babel-core/register test');
 				console.log(`current dir: ${process.cwd()}`);
-				shell.exec('./node_modules/gulp/bin/gulp.js mocha --gulpfile ./node_modules/build-scripts/gulpfile.js');
+				shell.exec('mocha --compilers js:babel-core/register test');
 			}
 		});
 	});
