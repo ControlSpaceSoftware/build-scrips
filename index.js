@@ -1,14 +1,19 @@
 #!/usr/bin/env node --harmony
 
 //http://blog.npmjs.org/post/118810260230/building-a-simple-command-line-tool-with-npm
+/*
+notes
 
+require context is build-scripts
+shelljs context is build-scripts/../..
+
+ */
 const program = require('commander');
 const shell = require('shelljs');
 
 shell.exec('pwd');
 
 const pkg = require('../../package.json');
-console.log(JSON.stringify(pkg, null, 4));
 
 const BABEL_RC = {
 	"babel": {
