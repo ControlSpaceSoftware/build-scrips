@@ -76,6 +76,7 @@ program
 		shell.exec("npm install", function (error, stdout, stderr) {
 			if (!error) {
 				console.log('runnint mocha --compilers js:babel-core/register test');
+				console.log(`current dir: ${process.cwd()}`);
 				shell.exec('mocha --compilers js:babel-core/register ../../test');
 			}
 		});
