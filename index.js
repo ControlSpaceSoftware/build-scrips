@@ -79,7 +79,7 @@ program
 			if (!error) {
 				console.log('running mocha --compilers js:babel-core/register test');
 				console.log(`current dir: ${process.cwd()}`);
-				shell.exec('mocha --compilers js:babel-core/register test');
+				shell.exec('mocha --compilers js:babel-core/register ../../test');
 			}
 		});
 	});
