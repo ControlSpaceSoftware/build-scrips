@@ -67,22 +67,22 @@ const commands = [
 	{
 		command: 'clean',
 		description: 'remove ./dist directory and ./dist.zip file',
-		shellExec: './node_modules/gulp/bin/gulp.js clean --gulpfile ./node_modules/build-scripts/gulpfile.js'
+		shellExec: './node_modules/gulp/bin/gulp.js clean --gulpfile ./node_modules/build-scripts/lambda.js'
 	},
 	{
 		command: 'zip',
 		description: 'zip ./dist directory into ./dist.zip file',
-		shellExec: './node_modules/gulp/bin/gulp.js zip --gulpfile ./node_modules/build-scripts/gulpfile.js'
+		shellExec: './node_modules/gulp/bin/gulp.js zip --gulpfile ./node_modules/build-scripts/lambda.js'
 	},
 	{
 		command: 'build-lambda',
 		description: 'build lambda function in /dist directory',
-		shellExec: './node_modules/gulp/bin/gulp.js build --gulpfile ./node_modules/build-scripts/gulpfile.js'
+		shellExec: './node_modules/gulp/bin/gulp.js build --gulpfile ./node_modules/build-scripts/lambda.js'
 	},
 	{
 		command: 'upload-lambda',
 		description: 'build and deploy function to aws lambda - function must already exist',
-		shellExec: './node_modules/gulp/bin/gulp.js upload --gulpfile ./node_modules/build-scripts/gulpfile.js'
+		shellExec: './node_modules/gulp/bin/gulp.js upload --gulpfile ./node_modules/build-scripts/lambda.js'
 	},
 	{
 		command: 'build',

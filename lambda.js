@@ -30,7 +30,7 @@ gulp.task('clean', function (cb) {
 });
 
 gulp.task('copy', function () {
-	return gulp.src('../../src/**/*')
+	return gulp.src('../../lib/**/*')
 		.pipe(gulp.dest('../../dist'));
 });
 
