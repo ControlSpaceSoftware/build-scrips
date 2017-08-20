@@ -8,6 +8,13 @@ const shell = require('shelljs');
 shell.exec('pwd');
 shell.exec('npm install babel-cli babel-preset-env chai expect mocha sinon');
 
+const pkg = require('./package.json');
+
+if (!(pkg && typeof pkg.babel === 'object')) {
+	console.error('package.json is missing babel section. fatal error exiting.');
+	process.exit(1);
+}
+
 program
 	.version('0.1.0')
 	.command('clean')
