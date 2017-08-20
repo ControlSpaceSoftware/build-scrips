@@ -25,14 +25,11 @@ const BABEL_RC = {
 };
 
 if (!(projectPackageJson && typeof projectPackageJson.babel === 'object')) {
-	console.log(chalk.red('package.json is missing babel options. add following to your package.json:'));
+	console.log(chalk.red('package.json is missing babel options.\nAdd following to your package.json:'));
 	console.log(JSON.stringify(BABEL_RC, null, 4));
 	console.log('fatal error exiting.');
 	return;
 }
-
-shell.exec('npm install babel-cli babel-preset-env chai expect mocha sinon');
-
 
 const commands = [
 	{
