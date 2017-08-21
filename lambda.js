@@ -8,12 +8,8 @@ const zip = require('gulp-zip');
 const del = require('del');
 const chalk = require('chalk');
 const gulp = require('gulp');
-const file = require('gulp-file');
-const rename = require('gulp-rename');
 const install = require('gulp-install');
 const camelCase = require('lodash.camelcase');
-const rollup = require('rollup').rollup;
-const babel = require('rollup-plugin-babel');
 
 const AWS = require('aws-sdk');
 

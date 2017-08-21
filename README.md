@@ -49,16 +49,18 @@ build-scripts command [options]
 
 The commands are opinionated by design as follows:
 
-javascript .js files are ES6 code
-use ES6 modules (import / export)
-use ./src directory for all source code
-use ./lib directory for all es5 code
-use babel to transform es6 to es5 code
-use ./dist directory for distribution code
-use engine node v6+
-conform to all npm conventions
-use npm as primary build tooling
-use mocha for testing
+* javascript .js files are ES6 code
+* use ES6 modules (import / export)
+* use ./src directory for all source code
+* use ./lib directory for all es5 code
+* use babel to transform es6 to es5 code
+* use ./dist directory for distribution code
+* use engine node v6+
+* conform to all npm conventions
+* use npm as primary build tooling
+* use mocha for testing
+* no environment variables in code or config (environment should not be in github)
+
 
 ```
 /project
