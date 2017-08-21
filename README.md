@@ -74,10 +74,11 @@ The commands are opinionated by design as follows:
 
 ## Your package.json File
 
-Add convenience scripts so you can conveniently run commands from npm, like, npm run test-watch.
-
 Your package.json file must reference set "main" to point to the es5 code in lib directory.
 Your package.json file must specify the {"babel": {"presets": ["env"]}}.
+
+Add convenience scripts so you can conveniently run commands from npm, like, npm run test-watch.
+Note to pass options down to the underlying script you use --, like, npm run commit -- -m "commit msg".
 
 ```javascript
 {
