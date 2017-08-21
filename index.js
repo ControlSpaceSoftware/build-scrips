@@ -39,12 +39,12 @@ const commands = [
 	{
 		command: 'test',
 		description: 'runs mocha test',
-		shellExec: 'mocha --compilers js:babel-core/register test'
+		shellExec: './node_modules/mocha/bin/mocha --compilers js:babel-core/register test'
 	},
 	{
 		command: 'test-watch',
 		description: 'runs mocha test with the watch option',
-		shellExec: 'mocha --compilers js:babel-core/register --watch test'
+		shellExec: './node_modules/mocha/bin/mocha --compilers js:babel-core/register --watch test'
 	},
 	{
 		command: 'commit',
@@ -89,7 +89,7 @@ const commands = [
 	{
 		command: 'build',
 		description: 'runs babel src -o lib // src/es6 to lib/es5',
-		shellExec: 'babel src --out-dir lib'
+		shellExec: './node_modules/babel-cli/bin/babel.js src --out-dir lib'
 	}
 ];
 
