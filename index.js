@@ -8,6 +8,7 @@ require context is build-scripts
 shelljs context is build-scripts/../..
 
  */
+const path = require('path');
 const program = require('commander');
 const shell = require('shelljs');
 const chalk = require('chalk');
@@ -15,8 +16,11 @@ const chalk = require('chalk');
 shell.exec('pwd');
 console.log(`current dir: ${process.cwd()}`);
 
+const currentPath = path.join(process.cwd(), './package.json');
+console.log('\n\ncurrentPath', currentPath, '\n\n');
+
 const projectPackageJson = require('./package.json');
-// console.log(JSON.stringify(projectPackageJson, null, 4));
+console.log(JSON.stringify(projectPackageJson, null, 4));
 
 const BABEL_RC = {
 	"babel": {
