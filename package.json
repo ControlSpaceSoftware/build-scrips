@@ -2,7 +2,7 @@
 	"name": "build-scripts",
 	"version": "1.0.35",
 	"description": "build node module scripts",
-	"main": "commands.js",
+	"main": "./index.js",
 	"bin": {
 		"build-scripts": "./index.js"
 	},
