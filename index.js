@@ -101,8 +101,11 @@ commands.forEach(({command, description, shellExec}) => {
 		.command(command)
 		.description(description)
 		.action(function (env) {
+			shell.exec('pwd');
+			console.log(`current dir: ${process.cwd()}`);
 			shell.exec("npm install", function (error, stdout, stderr) {
 				if (!error) {
+					shell.exec('pwd');
 					console.log(`current dir: ${process.cwd()}`);
 					console.log(shellExec);
 					shell.exec(shellExec);
