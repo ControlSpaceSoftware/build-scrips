@@ -49,10 +49,10 @@ const commands = [
 	{
 		command: 'commit',
 		description: 'runs build, test and commit interactive so you enter commit message',
-		shellExec: 'npm run build && npm run test && git add --all . && git commit',
+		shellExec: 'npm run build && npm run test && git add --all . && git commit $message',
 		options: [
 			{
-				flags: '-m, --message',
+				flags: '-m, --message [message]',
 				description: 'commit message'
 			}
 		]
@@ -103,24 +103,43 @@ program
 	.version('0.1.0');
 
 commands.forEach(({command, description, shellExec, options = []}) => {
-	program
-		.command(command)
-		.description(description);
-	if (options.length) {
-		options.forEach((option) => program.option(option.flags, option.description));
-	}
-	program.action(function (env) {
-		shell.exec('pwd');
-		console.log(`current dir: ${process.cwd()}`);
+
+	const commandDefinition = program.command(command);
+
+	commandDefinition.description(description);
+
+	const optionDefinitions = [];
+	options.forEach((option) => {
+
+		commandDefinition.option(option.flags, option.description);
+
+		/^(-[^\W]*),\W+(--[^\W]*)\W+\[([^\]]*)/.exec(option.flags);
+		optionDefinitions.push({
+			alias: RegExp.$1,
+			option: RegExp.$2,
+			name: RegExp.$3
+		});
+
+	});
+
+	commandDefinition.action(function (env) {
+		let execDefinition = shellExec;
+		optionDefinitions.forEach((option) => {
+			const value = env[option.name];
+			const replace = (option.alias || option.option) + (value ? ' ' + value : '');
+			const re = new RegExp(`\\$${option.name}(\\W|$)`, 'g');
+			execDefinition = execDefinition.replace(re, replace);
+		});
 		shell.exec("npm install", function (error, stdout, stderr) {
 			if (!error) {
 				shell.exec('pwd');
 				console.log(`current dir: ${process.cwd()}`);
-				console.log(shellExec);
-				shell.exec(shellExec);
+				console.log(execDefinition);
+				shell.exec(execDefinition);
 			}
 		});
 	});
+
 });
 
 program.parse(process.argv);
