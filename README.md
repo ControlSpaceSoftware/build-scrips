@@ -32,6 +32,7 @@ build-scripts command [options]
 
   Commands:
 
+    build              runs babel src -o lib // src/es6 to lib/es5
     test               runs mocha test
     test-watch         runs mocha test with the watch option
     commit [options]   runs build, test and commit interactive so you enter commit message
@@ -42,7 +43,6 @@ build-scripts command [options]
     zip                zip ./dist directory into ./dist.zip file
     build-lambda       build lambda function in /dist directory
     upload-lambda      build and deploy function to aws lambda - function must already exist
-    build              runs babel src -o lib // src/es6 to lib/es5
 ```
 
 ## Your Project Structure
