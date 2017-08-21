@@ -49,7 +49,13 @@ const commands = [
 	{
 		command: 'commit',
 		description: 'runs build, test and commit interactive so you enter commit message',
-		shellExec: 'npm run build && npm run test && git commit'
+		shellExec: 'npm run build && npm run test && git add --all . && git commit',
+		options: [
+			{
+				flags: '-m, --message',
+				description: 'commit message'
+			}
+		]
 	},
 	{
 		command: 'patch',
@@ -96,22 +102,25 @@ const commands = [
 program
 	.version('0.1.0');
 
-commands.forEach(({command, description, shellExec}) => {
+commands.forEach(({command, description, shellExec, options = []}) => {
 	program
 		.command(command)
-		.description(description)
-		.action(function (env) {
-			shell.exec('pwd');
-			console.log(`current dir: ${process.cwd()}`);
-			shell.exec("npm install", function (error, stdout, stderr) {
-				if (!error) {
-					shell.exec('pwd');
-					console.log(`current dir: ${process.cwd()}`);
-					console.log(shellExec);
-					shell.exec(shellExec);
-				}
-			});
+		.description(description);
+	if (options.length) {
+		options.forEach((option) => program.option(option.flags, option.description));
+	}
+	program.action(function (env) {
+		shell.exec('pwd');
+		console.log(`current dir: ${process.cwd()}`);
+		shell.exec("npm install", function (error, stdout, stderr) {
+			if (!error) {
+				shell.exec('pwd');
+				console.log(`current dir: ${process.cwd()}`);
+				console.log(shellExec);
+				shell.exec(shellExec);
+			}
 		});
+	});
 });
 
 program.parse(process.argv);
