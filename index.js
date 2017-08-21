@@ -37,6 +37,11 @@ if (!(projectPackageJson && typeof projectPackageJson.babel === 'object')) {
 
 const commands = [
 	{
+		command: 'build',
+		description: 'runs babel src -o lib // src/es6 to lib/es5',
+		shellExec: './node_modules/babel-cli/bin/babel.js src --out-dir lib'
+	},
+	{
 		command: 'test',
 		description: 'runs mocha test',
 		shellExec: './node_modules/mocha/bin/mocha --compilers js:babel-core/register test'
@@ -91,11 +96,6 @@ const commands = [
 		command: 'upload-lambda',
 		description: 'build and deploy function to aws lambda - function must already exist',
 		shellExec: './node_modules/gulp/bin/gulp.js upload --gulpfile ./node_modules/build-scripts/lambda.js'
-	},
-	{
-		command: 'build',
-		description: 'runs babel src -o lib // src/es6 to lib/es5',
-		shellExec: './node_modules/babel-cli/bin/babel.js src --out-dir lib'
 	}
 ];
 

@@ -21,28 +21,28 @@ build-scripts command [options]
 ## Commands
 
 ```
+  Usage: build-scripts -h
+  Usage: build-scripts [command] -h
   Usage: build-scripts [options] [command]
-
 
   Options:
 
     -V, --version  output the version number
     -h, --help     output usage information
 
-
   Commands:
 
-    test            runs mocha test
-    test-watch      runs mocha test with the watch option
-    commit          runs build, test and commit interactive so you enter commit message
-    patch           update package version
-    push            git push to origin
-    patch-push      update package version and git push to origin - runs build and test first
-    clean           remove dist directory and dist.zip file
-    zip             zip dist directory into dist.zip file
-    build-lambda    build lambda function in dist directory
-    upload-lambda   build and deploy function to aws lambda - function must already exist on aws
-    build           runs babel src -o lib // compile src/es6 to lib/es5
+    test               runs mocha test
+    test-watch         runs mocha test with the watch option
+    commit [options]   runs build, test and commit interactive so you enter commit message
+    patch              update package version
+    push               git push to origin
+    patch-push         update package version and git push to origin - runs build and test first
+    clean              remove ./dist directory and ./dist.zip file
+    zip                zip ./dist directory into ./dist.zip file
+    build-lambda       build lambda function in /dist directory
+    upload-lambda      build and deploy function to aws lambda - function must already exist
+    build              runs babel src -o lib // src/es6 to lib/es5
 ```
 
 ## Your Project Structure
@@ -79,7 +79,7 @@ Add convenience scripts so you can conveniently run commands from npm, like, npm
 Your package.json file must reference set "main" to point to the es5 code in lib directory.
 Your package.json file must specify the {"babel": {"presets": ["env"]}}.
 
-```json
+```javascript
 {
     "scripts": {
         "clean": "build-scripts clean",
