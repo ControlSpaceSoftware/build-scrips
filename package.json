@@ -1,6 +1,6 @@
 {
 	"name": "build-scripts",
-	"version": "1.0.32",
+	"version": "1.0.33",
 	"description": "build node module scripts",
 	"main": "commands.js",
 	"bin": {
