@@ -82,16 +82,18 @@ Your package.json file must specify the {"babel": {"presets": ["env"]}}.
 ```javascript
 {
     "scripts": {
-        "clean": "build-scripts clean",
-        "zip": "build-scripts zip",
-        "build-lambda": "build-scripts build-lambda",
-        "upload-lambda": "build-scripts upload-lambda",
+        "help": "build-scripts -h",
         "build": "build-scripts build",
         "test": "build-scripts test",
         "test-watch": "build-scripts test-watch",
         "commit": "build-scripts commit",
         "patch": "build-scripts patch",
-        "push": "build-scripts push"
+        "push": "build-scripts push",
+        "patch-push": "build-scripts patch-push",
+        "clean": "build-scripts clean",
+        "zip": "build-scripts zip",
+        "build-lambda": "build-scripts build-lambda",
+        "upload-lambda": "build-scripts upload-lambda"
     }
 }
 ```
