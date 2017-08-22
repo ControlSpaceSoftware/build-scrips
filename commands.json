@@ -7,7 +7,7 @@
 	{
 		"command": "scripts",
 		"description": "list the scripts to add to your package.json file",
-		"shellExec": "node info"
+		"shellExec": "node ./node_modules/build-scripts/scripts-info.js"
 	},
 	{
 		"command": "build",
