@@ -19,7 +19,7 @@ console.log(`current dir: ${process.cwd()}`);
 const currentPath = path.join(process.cwd(), './package.json');
 console.log('\n\ncurrentPath', currentPath, '\n\n');
 
-const projectPackageJson = require('./package.json');
+const projectPackageJson = require(currentPath);
 console.log(JSON.stringify(projectPackageJson, null, 4));
 
 const BABEL_RC = {
