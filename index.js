@@ -29,9 +29,9 @@ if (!(projectPackageJson && typeof projectPackageJson.name === 'string')) {
 	return;
 }
 
-const isUserRun = projectPackageJson.name !== 'build-scripts';
+const isBuildScriptsPackage = projectPackageJson.name === 'build-scripts';
 
-if (isUserRun) {
+if (!isBuildScriptsPackage) {
 
 	shell.exec('pwd');
 	console.log(`process.cwd: ${process.cwd()}`);
