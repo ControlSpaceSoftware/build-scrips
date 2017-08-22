@@ -1,5 +1,15 @@
 [
 	{
+		"command": "help",
+		"description": "list the commands and descriptions",
+		"shellExec": "build-scripts -h"
+	},
+	{
+		"command": "scripts",
+		"description": "list the scripts to add to your package.json file",
+		"shellExec": "node info"
+	},
+	{
 		"command": "build",
 		"description": "runs babel src -o lib // src/es6 to lib/es5",
 		"shellExec": "./node_modules/babel-cli/bin/babel.js src --out-dir lib"
