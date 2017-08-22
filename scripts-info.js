@@ -1,3 +1,4 @@
+#!/usr/bin/env node --harmony
 
 const commands = Array.from(require('./commands.json'));
 
