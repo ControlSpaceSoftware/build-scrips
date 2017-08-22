@@ -1,0 +1,63 @@
+[
+	{
+		"command": "build",
+		"description": "runs babel src -o lib // src/es6 to lib/es5",
+		"shellExec": "./node_modules/babel-cli/bin/babel.js src --out-dir lib"
+	},
+	{
+		"command": "test",
+		"description": "runs mocha test",
+		"shellExec": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register test"
+	},
+	{
+		"command": "test-watch",
+		"description": "runs mocha test with the watch option",
+		"shellExec": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register --watch test"
+	},
+	{
+		"command": "commit",
+		"description": "runs build, test and commit interactive so you enter commit message",
+		"shellExec": "npm run build && npm run test && git add --all . && git commit $message",
+		"options": [
+			{
+				"flags": "-m, --message [message]",
+				"description": "commit message"
+			}
+		]
+	},
+	{
+		"command": "patch",
+		"description": "update package version",
+		"shellExec": "npm version patch"
+	},
+	{
+		"command": "push",
+		"description": "git push to origin",
+		"shellExec": "git push origin --follow-tags"
+	},
+	{
+		"command": "patch-push",
+		"description": "update package version and git push to origin - runs build and test first",
+		"shellExec": "npm run build && npm run test && npm run patch && npm run push"
+	},
+	{
+		"command": "clean",
+		"description": "remove ./dist directory and ./dist.zip file",
+		"shellExec": "./node_modules/gulp/bin/gulp.js clean --gulpfile ./node_modules/build-scripts/lambda.js"
+	},
+	{
+		"command": "zip",
+		"description": "zip ./dist directory into ./dist.zip file",
+		"shellExec": "./node_modules/gulp/bin/gulp.js zip --gulpfile ./node_modules/build-scripts/lambda.js"
+	},
+	{
+		"command": "build-lambda",
+		"description": "build lambda function in /dist directory",
+		"shellExec": "./node_modules/gulp/bin/gulp.js build --gulpfile ./node_modules/build-scripts/lambda.js"
+	},
+	{
+		"command": "upload-lambda",
+		"description": "build and deploy function to aws lambda - function must already exist",
+		"shellExec": "./node_modules/gulp/bin/gulp.js upload --gulpfile ./node_modules/build-scripts/lambda.js"
+	}
+]
