@@ -5,7 +5,7 @@ const scripts = commands.reduce((scripts, command) => {
 	scripts[command.command] = `build-scripts ${command.command}`;
 	return scripts;
 }, {
-	help: '-h',
+	help: 'build-scripts -h',
 	scripts: 'node info'
 });
 
