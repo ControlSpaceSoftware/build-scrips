@@ -38,13 +38,13 @@ if (isUserRun) {
 	console.log('using package.json file:', currentPath);
 	console.log(JSON.stringify(projectPackageJson, null, 4));
 
-	if (!(projectPackageJson && typeof projectPackageJson.babel === 'object')) {
-		console.log(chalk.red('package.json is missing babel options.\nAdd following to your package.json:'));
-		console.log(JSON.stringify(BABEL_RC, null, 4));
-		console.log('fatal error exiting.');
-		return;
-	}
+}
 
+if (!(projectPackageJson && typeof projectPackageJson.babel === 'object')) {
+	console.log(chalk.red('package.json is missing babel options.\nAdd following to your package.json:'));
+	console.log(JSON.stringify(BABEL_RC, null, 4));
+	console.log('fatal error exiting.');
+	return;
 }
 
 program
