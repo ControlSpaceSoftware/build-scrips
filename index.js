@@ -75,7 +75,7 @@ commands.forEach(({command, description, shellExec, options = []}) => {
 		optionDefinitions.forEach((option) => {
 			if (env.hasOwnProperty(option.name)) {
 				const value = env[option.name];
-				const replace = (option.alias || option.option) + (value ? ' "' + value + '"': '');
+				const replace = (option.alias || option.option) + (typeof value === 'string' ? ' "' + value + '"': '') + ' ';
 				const re = new RegExp(`\\$${option.name}(\\W|$)`, 'g');
 				execDefinition = execDefinition.replace(re, replace);
 			}
