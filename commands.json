@@ -10,9 +10,14 @@
 		"shellExec": "node ./node_modules/build-scripts/scripts-info.js"
 	},
 	{
+		"command": "resources",
+		"description": "copy resources from ./src to ./lib directory",
+		"shellExec": "./node_modules/gulp/bin/gulp.js copy-src-resources-to-lib --gulpfile ./node_modules/build-scripts/tasks.js"
+	},
+	{
 		"command": "build",
 		"description": "runs babel src -o lib // src/es6 to lib/es5",
-		"shellExec": "./node_modules/babel-cli/bin/babel.js src --out-dir lib"
+		"shellExec": "npm run resources && ./node_modules/babel-cli/bin/babel.js src --out-dir lib"
 	},
 	{
 		"command": "test",
@@ -53,21 +58,21 @@
 	{
 		"command": "clean",
 		"description": "remove ./dist directory and ./dist.zip file",
-		"shellExec": "./node_modules/gulp/bin/gulp.js clean --gulpfile ./node_modules/build-scripts/lambda.js"
+		"shellExec": "./node_modules/gulp/bin/gulp.js clean --gulpfile ./node_modules/build-scripts/tasks.js"
 	},
 	{
 		"command": "zip",
 		"description": "zip ./dist directory into ./dist.zip file",
-		"shellExec": "./node_modules/gulp/bin/gulp.js zip --gulpfile ./node_modules/build-scripts/lambda.js"
+		"shellExec": "./node_modules/gulp/bin/gulp.js zip --gulpfile ./node_modules/build-scripts/tasks.js"
 	},
 	{
 		"command": "build-lambda",
 		"description": "build lambda function in /dist directory",
-		"shellExec": "./node_modules/gulp/bin/gulp.js build --gulpfile ./node_modules/build-scripts/lambda.js"
+		"shellExec": "./node_modules/gulp/bin/gulp.js build --gulpfile ./node_modules/build-scripts/tasks.js"
 	},
 	{
 		"command": "upload-lambda",
 		"description": "build and deploy function to aws lambda - function must already exist",
-		"shellExec": "./node_modules/gulp/bin/gulp.js upload --gulpfile ./node_modules/build-scripts/lambda.js"
+		"shellExec": "./node_modules/gulp/bin/gulp.js upload --gulpfile ./node_modules/build-scripts/tasks.js"
 	}
 ]

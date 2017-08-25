@@ -30,6 +30,11 @@ gulp.task('copy', function () {
 		.pipe(gulp.dest('../../dist'));
 });
 
+gulp.task('copy-src-resources-to-lib', function () {
+	return gulp.src(['../../src/**/*', '!**/*.js'])
+		.pipe(gulp.dest('../../lib'));
+});
+
 // Here we want to install npm packages to dist, ignoring devDependencies.
 gulp.task('npm', function () {
 	return gulp.src('../../package.json')
