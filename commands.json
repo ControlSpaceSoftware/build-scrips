@@ -22,7 +22,13 @@
 	{
 		"command": "com-test",
 		"description": "runs mocha test",
-		"shellExec": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register test"
+		"shellExec": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register $watch test",
+		"options": [
+			{
+				"flags": "-w, --watch [watch]",
+				"description": "add watch flag. usage: npm run com-test -- --watch"
+			}
+		]
 	},
 	{
 		"command": "test-watch",
@@ -36,7 +42,7 @@
 		"options": [
 			{
 				"flags": "-m, --message [message]",
-				"description": "commit message"
+				"description": "commit message. usage: npm run commit -- -m 'commit message'"
 			}
 		]
 	},

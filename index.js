@@ -73,10 +73,12 @@ commands.forEach(({command, description, shellExec, options = []}) => {
 	commandDefinition.action(function (env) {
 		let execDefinition = shellExec;
 		optionDefinitions.forEach((option) => {
-			const value = env[option.name];
-			const replace = (option.alias || option.option) + (value ? ' "' + value + '"': '');
-			const re = new RegExp(`\\$${option.name}(\\W|$)`, 'g');
-			execDefinition = execDefinition.replace(re, replace);
+			if (env.hasOwnProperty(option.name)) {
+				const value = env[option.name];
+				const replace = (option.alias || option.option) + (value ? ' "' + value + '"': '');
+				const re = new RegExp(`\\$${option.name}(\\W|$)`, 'g');
+				execDefinition = execDefinition.replace(re, replace);
+			}
 		});
 		shell.exec("npm install", function (error, stdout, stderr) {
 			if (!error) {
