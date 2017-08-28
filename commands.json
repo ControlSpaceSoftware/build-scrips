@@ -15,30 +15,25 @@
 		"shellExec": "./node_modules/gulp/bin/gulp.js copy-src-resources-to-lib --gulpfile ./node_modules/build-scripts/tasks.js"
 	},
 	{
-		"command": "com-build",
-		"description": "runs babel src -o lib // src/es6 to lib/es5",
+		"command": "compile",
+		"description": "runs babel src -o lib // compile es6 code from src/ into es5 code in lib/",
 		"shellExec": "npm run resources && ./node_modules/babel-cli/bin/babel.js src --out-dir lib"
 	},
 	{
-		"command": "com-test",
+		"command": "test",
 		"description": "runs mocha test",
 		"shellExec": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register $watch test",
 		"options": [
 			{
 				"flags": "-w, --watch [watch]",
-				"description": "add watch flag. usage: npm run com-test -- --watch"
+				"description": "add watch flag. usage: npm run test -- --watch"
 			}
 		]
 	},
 	{
-		"command": "test-watch",
-		"description": "runs mocha test with the watch option",
-		"shellExec": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register --watch test"
-	},
-	{
 		"command": "commit",
-		"description": "runs com-build, test and commit interactive so you enter commit message",
-		"shellExec": "npm run com-build && npm run com-test && git add --all . && git commit $message",
+		"description": "runs compile, test and commit interactive so you enter commit message",
+		"shellExec": "npm run compile && npm run test && git add --all . && git commit $message",
 		"options": [
 			{
 				"flags": "-m, --message [message]",
@@ -58,8 +53,8 @@
 	},
 	{
 		"command": "patch-push",
-		"description": "update package version and git push to origin - runs com-build and com-test first",
-		"shellExec": "npm run com-build && npm run com-test && npm run patch && npm run push"
+		"description": "update package version and git push to origin - runs compile and test first",
+		"shellExec": "npm run compile && npm run test && npm run patch && npm run push"
 	},
 	{
 		"command": "clean",
