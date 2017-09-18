@@ -99,4 +99,3 @@ gulp.task('upload', function (cb) {
 });
 
 gulp.task('package', gulp.series(['clean', 'copy', 'npm', 'zip']));
-gulp.task('upload', gulp.series(['clean', 'copy', 'npm', 'zip', 'upload']));
