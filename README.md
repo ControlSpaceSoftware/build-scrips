@@ -98,3 +98,16 @@ Note to pass options down to the underlying script you use --, like, npm run com
     }
 }
 ```
+
+# Test Coverage
+To add test coverage to your project modify your package.json test script.
+Put `nyc --reporter=html --reporter=text ` in from of the `build-scripts test` command.
+
+```
+		"test": "nyc --reporter=html --reporter=text build-scripts test",
+```
+
+The nyc module should be installed automatically for you by build-scripts.
+Sometimes you may need to rerun `npm i -D github:ControlSpaceSoftware/build-scripts`.
+
+Or you can install nyc local to your project as a `-D` or `--save-dev` dependency.
