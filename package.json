@@ -1,6 +1,6 @@
 {
 	"name": "build-scripts",
-	"version": "1.0.59",
+	"version": "1.0.60",
 	"description": "build node module scripts",
 	"bin": {
 		"scripts-info": "./scripts-info.js",
