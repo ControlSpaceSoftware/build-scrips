@@ -10,6 +10,9 @@
 		"node": ">=6"
 	},
 	"scripts": {
+		"audit": "nsp audit-shrinkwrap",
+		"outdated": "npm outdated --depth 0",
+		"shrinkwrap-dev": "npm shrinkwrap --dev",
 		"postinstall": "./scripts-info.js",
 		"commit:all:push": "git add --all . && git commit -a -m 'wip' && git push origin",
 		"patch:push": "npm version patch && git push origin"
@@ -25,15 +28,15 @@
 	},
 	"homepage": "https://github.com/ControlSpaceSoftware/build-scripts#readme",
 	"dependencies": {
-		"aws-sdk": "^2.96.0",
+		"aws-sdk": "^2.146.0",
 		"babel-cli": "^6.26.0",
 		"babel-core": "^6.26.0",
-		"babel-preset-env": "^1.6.0",
+		"babel-preset-env": "^1.6.1",
 		"babel-preset-es2015": "^6.24.1",
 		"babel-preset-es2015-rollup": "^3.0.0",
 		"babel-register": "^6.26.0",
-		"chai": "^4.1.1",
-		"chalk": "^2.1.0",
+		"chai": "^4.1.2",
+		"chalk": "^2.3.0",
 		"commander": "^2.11.0",
 		"del": "^3.0.0",
 		"expect": "^1.20.2",
@@ -42,14 +45,15 @@
 		"gulp-mocha": "^4.3.1",
 		"gulp-util": "^3.0.8",
 		"gulp-zip": "^4.0.0",
-		"jsdom": "^11.2.0",
+		"jsdom": "^11.3.0",
 		"lodash.camelcase": "^4.3.0",
 		"lodash.kebabcase": "^4.1.1",
-		"mocha": "^3.5.0",
-		"nyc": "^11.2.1",
+		"mocha": "^3.5.3",
+		"nsp": "^3.1.0",
+		"nyc": "^11.3.0",
 		"shelljs": "^0.7.8",
-		"sinon": "^3.2.1",
-		"sinon-chai": "^2.13.0"
+		"sinon": "^3.3.0",
+		"sinon-chai": "^2.14.0"
 	},
 	"devDependencies": {},
 	"aws": {

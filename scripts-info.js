@@ -7,5 +7,8 @@ const scripts = commands.reduce((scripts, command) => {
 	return scripts;
 }, {});
 
+scripts['outdated'] = "npm outdated --depth 0";
+scripts['shrinkwrap-dev'] = "npm shrinkwrap --dev";
+
 console.log('Add scripts to your package.json file:');
 console.log(JSON.stringify(scripts, null, 5));
